@@ -1,4 +1,5 @@
 ﻿using Basic_Web_API.Data;
+using Basic_Web_API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basic_Web_API.Controllers
@@ -15,21 +16,42 @@ namespace Basic_Web_API.Controllers
         }
 
         [HttpGet("TestConnect")]
-
         public DateTime TestConnect()
         {
             return _dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
         }
 
-        [HttpGet("GetUsers/{fistname}")]
-        public string[] GetUsers(string fistname)
+        [HttpGet("GetUsers")]
+        public IEnumerable<UsersModels> GetUsers()
         {
-            string[] responseArray = new string[]
-            {
-                fistname,
-                "test user"
-            };
-            return responseArray;
+            string sql = @"
+                SELECT [UserId]
+                      ,[FirstName]
+                      ,[LastName]
+                      ,[Email]
+                      ,[Gender]
+                      ,[Active]
+                  FROM TutorialAppSchema.Users";
+            IEnumerable<UsersModels> Users = _dapper.LoadData<UsersModels>(sql);
+            return Users;
+
+        }
+
+        [HttpGet("GetSingleUsers/{UserId}")]
+        public UsersModels GetSingleUsers(int UserId)
+        {
+            string sql = @"
+                SELECT [UserId]
+                    ,[FirstName]
+                    ,[LastName]
+                    ,[Email]
+                    ,[Gender]
+                    ,[Active]
+                FROM TutorialAppSchema.Users 
+                WHERE UserId = " + UserId.ToString();
+
+            UsersModels Users = _dapper.LoadDataSingle<UsersModels>(sql);
+            return Users;
         }
     }
 }

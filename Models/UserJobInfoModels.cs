@@ -1,0 +1,9 @@
+﻿namespace Basic_Web_API.Models
+{
+    public class UserJobInfoModels
+    {
+        public int UserId { get; set; }
+        public string JobTitle { get; set; } = string.Empty;
+        public string Department { get; set; } = string.Empty;
+    }
+}

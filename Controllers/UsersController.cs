@@ -53,5 +53,17 @@ namespace Basic_Web_API.Controllers
             UsersModels Users = _dapper.LoadDataSingle<UsersModels>(sql);
             return Users;
         }
+
+        [HttpPut]
+        public IActionResult EditDataUser()
+        {
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult AddDataUser()
+        {
+            return Ok();
+        }
     }
 }

@@ -57,6 +57,7 @@ namespace Basic_Web_API.Controllers
         [HttpPut]
         public IActionResult EditDataUser()
         {
+            string sql = @"";
             return Ok();
         }
 

@@ -1,7 +1,7 @@
-﻿using Basic_Web_API.Models;
+﻿using BasicDotNet_WebAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Basic_Web_API.Data
+namespace BasicDotNet_WebAPI.Data
 {
     public class DataContextEF : DbContext
     {

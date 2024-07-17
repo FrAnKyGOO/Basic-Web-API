@@ -1,4 +1,4 @@
-﻿namespace Basic_Web_API.Models
+﻿namespace BasicDotNet_WebAPI.Models
 {
     public class UsersJobInfoModels
     {

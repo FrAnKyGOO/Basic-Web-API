@@ -1,6 +1,6 @@
-@Basic_Web_API_HostAddress = http://localhost:5259
+@BasicDotNet_WebAPI_HostAddress = http://localhost:5259
 
-GET {{Basic_Web_API_HostAddress}}/weatherforecast/
+GET {{BasicDotNet_WebAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

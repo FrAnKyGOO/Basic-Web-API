@@ -1,4 +1,4 @@
-﻿namespace Basic_Web_API.Dtos
+﻿namespace BasicDotNet_WebAPI.Dtos
 {
     public class UsersDto
     {

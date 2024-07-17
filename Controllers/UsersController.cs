@@ -1,9 +1,9 @@
-﻿using Basic_Web_API.Data;
-using Basic_Web_API.Dtos;
-using Basic_Web_API.Models;
+﻿using BasicDotNet_WebAPI.Data;
+using BasicDotNet_WebAPI.Dtos;
+using BasicDotNet_WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Basic_Web_API.Controllers
+namespace BasicDotNet_WebAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]

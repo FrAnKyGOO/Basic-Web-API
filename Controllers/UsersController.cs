@@ -1,10 +1,11 @@
 ﻿using Basic_Web_API.Data;
+using Basic_Web_API.Dtos;
 using Basic_Web_API.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Basic_Web_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -74,7 +75,7 @@ namespace Basic_Web_API.Controllers
         }
 
         [HttpPost("AddUsers")]
-        public IActionResult AddDataUser(UsersModels user)
+        public IActionResult AddDataUser(UsersDto user)
         {
             string sql = @"
                         INSERT INTO TutorialAppSchema.Users (
@@ -97,6 +98,26 @@ namespace Basic_Web_API.Controllers
             }
 
             throw new Exception("Failed to Update User");
+        }
+
+        [HttpDelete("DeleteUserByID/{UserId}")]
+        public IActionResult DeleteUserByID(int UserId)
+        {
+            string sql_Update_Active = @"
+                        UPDATE TutorialAppSchema.Users
+                        SET [Active] = 'False' 
+                        WHERE UserId = " + UserId.ToString();
+
+            string sql_Delete = @"
+                        DELETE FROM TutorialAppSchema.Users
+                        WHERE UserId = " + UserId.ToString();
+
+            if (_dapper.ExecuteSql(sql_Update_Active))
+            {
+                return Ok();
+            }
+
+            throw new Exception("Failed to Delete User");
         }
     }
 }

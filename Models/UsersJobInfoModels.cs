@@ -1,6 +1,6 @@
 ﻿namespace Basic_Web_API.Models
 {
-    public class UserJobInfoModels
+    public class UsersJobInfoModels
     {
         public int UserId { get; set; }
         public string JobTitle { get; set; } = string.Empty;

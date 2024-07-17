@@ -1,6 +1,6 @@
 ﻿namespace Basic_Web_API.Models
 {
-    public class UserSalaryModels
+    public class UsersSalaryModels
     {
         public int UserId { get; set; }
         public decimal Salary { get; set; }

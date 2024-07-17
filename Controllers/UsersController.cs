@@ -54,17 +54,49 @@ namespace Basic_Web_API.Controllers
             return Users;
         }
 
-        [HttpPut]
-        public IActionResult EditDataUser()
+        [HttpPut("EditDataUser")]
+        public IActionResult EditDataUser(UsersModels user)
         {
-            string sql = @"";
-            return Ok();
+            string sql = @"
+                        UPDATE TutorialAppSchema.Users
+                            SET [FirstName] = '" + user.FirstName +
+                                "', [LastName] = '" + user.LastName +
+                                "', [Email] = '" + user.Email +
+                                "', [Gender] = '" + user.Gender +
+                                "', [Active] = '" + user.Active +
+                            "' WHERE UserId = " + user.UserId;
+            if (_dapper.ExecuteSql(sql))
+            {
+                return Ok();
+            }
+
+            throw new Exception("Failed to Update User");
         }
 
-        [HttpPost]
-        public IActionResult AddDataUser()
+        [HttpPost("AddUsers")]
+        public IActionResult AddDataUser(UsersModels user)
         {
-            return Ok();
+            string sql = @"
+                        INSERT INTO TutorialAppSchema.Users (
+                            [FirstName],
+                            [LastName],
+                            [Email],
+                            [Gender],
+                            [Active] )
+                        VALUES
+                            ('" + user.FirstName +
+                            "', '" + user.LastName +
+                            "', '" + user.Email +
+                            "', '" + user.Gender +
+                            "', '" + user.Active +
+                         "')";
+
+            if (_dapper.ExecuteSql(sql))
+            {
+                return Ok();
+            }
+
+            throw new Exception("Failed to Update User");
         }
     }
 }

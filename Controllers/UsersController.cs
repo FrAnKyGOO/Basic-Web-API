@@ -124,7 +124,7 @@ namespace Basic_Web_API.Controllers
 
         #region Users Salary
 
-        [HttpGet("UserSalary/{userId}")]
+        [HttpGet("GetDataUserSalaryByID/{userId}")]
         public IEnumerable<UsersSalaryModels> GetUserSalary(int userId)
         {
             return _dapper.LoadData<UsersSalaryModels>(@"
@@ -134,7 +134,7 @@ namespace Basic_Web_API.Controllers
                 WHERE UserId = " + userId.ToString());
         }
 
-        [HttpPost("UserSalary")]
+        [HttpPost("AddUserSalary")]
         public IActionResult PostUserSalary(UsersSalaryModels userSalaryForInsert)
         {
             string sql = @"
@@ -152,7 +152,7 @@ namespace Basic_Web_API.Controllers
             throw new Exception("Adding User Salary failed on save");
         }
 
-        [HttpPut("UserSalary")]
+        [HttpPut("UpdateDataUserSalaryByID")]
         public IActionResult PutUserSalary(UsersSalaryModels userSalaryForUpdate)
         {
             string sql = "UPDATE TutorialAppSchema.UserSalary SET Salary="
@@ -166,7 +166,7 @@ namespace Basic_Web_API.Controllers
             throw new Exception("Updating User Salary failed on save");
         }
 
-        [HttpDelete("UserSalary/{userId}")]
+        [HttpDelete("DeleteDataUserSalaryByID/{userId}")]
         public IActionResult DeleteUserSalary(int userId)
         {
             string sql = "DELETE FROM TutorialAppSchema.UserSalary WHERE UserId=" + userId.ToString();
@@ -182,7 +182,7 @@ namespace Basic_Web_API.Controllers
 
         #region Users JobInfo
 
-        [HttpGet("UserJobInfo/{userId}")]
+        [HttpGet("GetDataUserJobInfoByID/{userId}")]
         public IEnumerable<UsersJobInfoModels> GetUserJobInfo(int userId)
         {
             return _dapper.LoadData<UsersJobInfoModels>(@"
@@ -193,7 +193,7 @@ namespace Basic_Web_API.Controllers
                 WHERE UserId = " + userId.ToString());
         }
 
-        [HttpPost("UserJobInfo")]
+        [HttpPost("AddDataUserJobInfo")]
         public IActionResult PostUserJobInfo(UsersJobInfoModels userJobInfoForInsert)
         {
             string sql = @"
@@ -213,7 +213,7 @@ namespace Basic_Web_API.Controllers
             throw new Exception("Adding User Job Info failed on save");
         }
 
-        [HttpPut("UserJobInfo")]
+        [HttpPut("UpdateDataUserJobInfoByID")]
         public IActionResult PutUserJobInfo(UsersJobInfoModels userJobInfoForUpdate)
         {
             string sql = "UPDATE TutorialAppSchema.UserJobInfo SET Department='"
@@ -241,7 +241,7 @@ namespace Basic_Web_API.Controllers
         //     throw new Exception("Deleting User Job Info failed on save");
         // }
 
-        [HttpDelete("UserJobInfo/{userId}")]
+        [HttpDelete("DelateDataUserJobInfoByID/{userId}")]
         public IActionResult DeleteUserJobInfo(int userId)
         {
             string sql = @"
